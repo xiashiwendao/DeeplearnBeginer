@@ -4,9 +4,10 @@ from matplotlib import pyplot as plt
 # 求解函数在点x下（多维）的梯度的
 # 计算出来函数在x各个维度的导数，组织在一起形成导数
 def numerical_gradient(f, x):
+    # print("+++++++ X is:", x, "x size is: ", len(x), "+++++")
     h = 1e-4 # 0.0001
     grad = np.zeros_like(x) # 生成和x形状相同的数组
-    for idx in range(x.size):
+    for idx in range(len(x)):
         tmp_val = x[idx]
         # f(x+h)的计算
         x[idx] = tmp_val + h
