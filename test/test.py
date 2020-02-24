@@ -59,3 +59,7 @@ arr3
 arr1.dot(arr3)
 
 arr1*arr2
+
+import numpy as np
+arr3 = [[1,2,3],[4,5,6]]
+np.zeros_like(arr3)

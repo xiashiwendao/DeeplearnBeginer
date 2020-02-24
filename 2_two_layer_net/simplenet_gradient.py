@@ -3,7 +3,7 @@ import sys, os
 sys.path.append(os.getcwd())  # 为了导入父目录中的文件而进行的设定
 import numpy as np
 from common.functions import softmax, cross_entropy_error
-from common.gradient import numerical_gradient
+from common.gradient import *
 
 class simpleNet:
     def __init__(self):
