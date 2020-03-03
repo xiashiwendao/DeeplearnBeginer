@@ -31,7 +31,7 @@ class TwoLayerNet:
         y = self.predict(x)
         
         return cross_entropy_error(y, t)
-    
+    # x:输入数据, t:监督数据
     def accuracy(self, x, t):
         y = self.predict(x)
         y = np.argmax(y, axis=1)

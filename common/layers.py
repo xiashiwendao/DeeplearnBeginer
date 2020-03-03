@@ -12,6 +12,7 @@ class Relu:
         out = x.copy()
         out[self.mask] = 0
         return out
+        
     def backward(self, dout):
         dout[self.mask] = 0
         dx = dout
@@ -37,10 +38,12 @@ class Affine:
         self.x = None
         self.dW = None
         self.db = None
+    
     def forward(self, x):
         self.x = x
         out = np.dot(x, self.W) + self.b
         return out
+    
     def backward(self, dout):
         dx = np.dot(dout, self.W.T)
         self.dW = np.dot(self.x.T, dout)

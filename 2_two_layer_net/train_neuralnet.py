@@ -20,6 +20,9 @@ train_loss_list = []
 train_acc_list = []
 test_acc_list = []
 
+# epoch是指把所有的训练样本跑一边
+# 这里iter_per_epoch就是指每个epoch要迭代几轮才能够把所有的
+# 训练数据跑完
 iter_per_epoch = max(train_size / batch_size, 1)
 
 for i in range(iters_num):

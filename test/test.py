@@ -61,5 +61,23 @@ arr1.dot(arr3)
 arr1*arr2
 
 import numpy as np
+help("numpy")
 arr3 = [[1,2,3],[4,5,6]]
 np.zeros_like(arr3)
+
+np.zeros(3)
+np.zeros([3, 2])
+
+import pandas as pd
+from pandas import DataFrame
+import numpy as np
+frame = DataFrame(np.random.randn(4, 3), columns=list('bde'), index=['Utah', 'Ohio', 'Texas', 'Oregon'])
+frame
+
+frame['e'].apply(lambda x: '%.2f' % x) # 指定列，x就是这一列的数据
+frame.apply(lambda x: x.max() - x.min()) # 不指定列，全盘扫描，传入的x是一列的信息；
+frame.map(lambda x: '%.2f' % x) # 报错，DataFrame没有map函数，只有Serias才有map
+frame['e'].map(lambda x: '%.2f' % x) # map遍历Serias对象里面的每一项
+frame.applymap(lambda x: '%.2f' % x) 
+frame['e'].applymap(lambda x: '%.2f' % x) # 报错，Serias里面没有applaymap
+
