@@ -34,14 +34,15 @@ class MultiLayerNet:
         self.__init_weight(weight_init_std)
 
         # 生成层
-        activation_layer = {'sigmoid': Sigmoid, 'relu': Relu}
-        self.layers = OrderedDict()
+        activation_layer = {'sigmoid': Sigmoid, 'relu': Relu} #激活层类型
+        self.layers = OrderedDict() # 通过orderedDict来保证层的顺序和添加顺序保持一致
         for idx in range(1, self.hidden_layer_num+1):
             self.layers['Affine' + str(idx)] = Affine(self.params['W' + str(idx)],
                                                       self.params['b' + str(idx)])
             self.layers['Activation_function' + str(idx)] = activation_layer[activation]()
         # 最后一层单独处理，是全连接层（Afine）+softmax（隐藏层的激活函数都是relu）
         idx = self.hidden_layer_num + 1
+        # layers只是定义到Affine层，即隐藏层，输出层的激活函数是放在last_layer中定义
         self.layers['Affine' + str(idx)] = Affine(self.params['W' + str(idx)], self.params['b' + str(idx)])
 
         self.last_layer = SoftmaxWithLoss()
@@ -125,19 +126,7 @@ class MultiLayerNet:
         return grads
 
     def gradient(self, x, t):
-        """求梯度（误差反向传播法）
-
-        Parameters
-        ----------
-        x : 输入数据
-        t : 教师标签
-
-        Returns
-        -------
-        具有各层的梯度的字典变量
-            grads['W1']、grads['W2']、...是各层的权重
-            grads['b1']、grads['b2']、...是各层的偏置
-        """
+        
         # forward
         self.loss(x, t)
 
